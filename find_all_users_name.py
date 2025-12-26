@@ -9,4 +9,13 @@ def find_all_users_name(data: dict)->list:
     Returns:
         list: List containing all the users name.
     """
-    return
+    messages: list[dict] = data['messages']
+    user_names = []
+    for message in messages:
+        if 'from' in message.keys():
+            user_names.append(message['from'])
+
+    return user_names
+
+data = read_data('data/result.json')
+print(find_all_users_name(data))
